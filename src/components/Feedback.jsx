@@ -11,7 +11,7 @@ export default class Feedback extends Component {
     ...initialState,
   };
 
-  renderStateValuesMarkup = () => {
+  renderFeedBackStatistics = () => {
     const feedbacks = Object.entries(this.state);
     const jsxArr = feedbacks.map(arr => {
       return (
@@ -35,7 +35,6 @@ export default class Feedback extends Component {
 
   renderFeedbackButtons = () => {
     const feedbacks = Object.keys(this.state);
-    console.log(feedbacks);
     return feedbacks.map(e => (
       <button key={e} onClick={this.handleCLick.bind(this)}>
         {[e]}
@@ -43,14 +42,49 @@ export default class Feedback extends Component {
     ));
   };
 
+  countValues() {
+    const valuesArr = Object.values(this.state);
+    let sum = 0;
+    sum = valuesArr.reduce((acc, e) => (acc += e), 0);
+    return sum;
+  }
+
+  countTotalFeedback = () => {
+    return (
+      <li className="item">
+        <p>Total {this.countValues()}</p>
+      </li>
+    );
+  };
+
+  countPositiveFeedbackPercentage() {
+    const goodFeedbackCount = this.state.good;
+
+    let positiveCount = (100 / this.countValues()) * goodFeedbackCount;
+    let roundedValue = Math.round(positiveCount);
+    if (isNaN(roundedValue)) {
+      roundedValue = 0;
+    }
+    return (
+      <li className="item">
+        <p>Positive Feedbacks: {roundedValue}% </p>
+      </li>
+    );
+  }
+
   render() {
+    console.log(this.countValues());
     return (
       <section className="container">
         <h2 hidden> Feedback</h2>
         <p>Please Leave Feedback</p>
         <div className="btn-container">{this.renderFeedbackButtons()}</div>
         <p>Statistics</p>
-        <ul className="List">{this.renderStateValuesMarkup()}</ul>
+        <ul className="List">
+          {this.renderFeedBackStatistics()}
+          {this.countTotalFeedback()}
+          {this.countPositiveFeedbackPercentage()}
+        </ul>
       </section>
     );
   }

@@ -1,28 +1,19 @@
-// import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-import Feedback from './components/Feedback'
+import SectionStatistic from './components/SectionStatistic/SectionStatistic';
 
-function App() {
-  return (
-    <Feedback />
+export default class App extends Component {
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
 
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
-  );
+  render() {
+    return (
+      <>
+        <SectionStatistic data={this.state} />
+      </>
+    );
+  }
 }
-
-export default App;
