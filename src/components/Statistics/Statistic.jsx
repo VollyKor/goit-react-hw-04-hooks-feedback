@@ -6,7 +6,7 @@ export default function Statistic(props) {
     if (arr[0] === 'positivePercentage') {
       return (
         <li key={arr[0]} className={s.item}>
-          <p>{`Positive feedback: ${arr[1]}`}</p>
+          <p>{`Positive feedback: ${arr[1]}%`}</p>
         </li>
       );
     }

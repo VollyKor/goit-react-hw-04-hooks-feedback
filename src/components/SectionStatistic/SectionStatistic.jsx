@@ -5,12 +5,6 @@ import Statistic from '../Statistics/Statistic';
 import Notification from '../Notification/Notification';
 
 export default class SectionStatistic extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
-
   countValues() {
     const { data } = this.props;
     const valuesArr = Object.values(data);
@@ -31,30 +25,20 @@ export default class SectionStatistic extends Component {
     return roundedValue;
   }
 
-  handleCLick = e => {
-    // const { data } = this.props;
-    const name = e.currentTarget.textContent;
-    this.setState(prevState => {
-      return {
-        [name]: prevState[name] + 1,
-      };
-    });
-  };
-
   render() {
-    const { data } = this.props;
+    const { data, onLeaveFeedback } = this.props;
     const { good, neutral, bad } = data;
     return (
       <section>
         <h2>Please Leave Feedback </h2>
         <FeedbackOptions
           options={data}
-          onLeaveFeedback={this.handleCLick}
+          onLeaveFeedback={onLeaveFeedback}
         />
-        {this.countValues() === 0 ? (
+        {this.countValues() !== 0 ? (
           <>
             <h3>Statistics</h3>
-            <ul>
+            <ul className="list">
               <Statistic
                 good={good}
                 neutral={neutral}
