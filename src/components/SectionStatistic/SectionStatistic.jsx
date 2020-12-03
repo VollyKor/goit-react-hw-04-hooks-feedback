@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import s from './SectionStatistic.module.css';
+import s from './SectionStatistic.module.css';
 import FeedbackOptions from '../FeedBackOptions/FeedbackOptions';
 import Statistic from '../Statistics/Statistic';
 import Notification from '../Notification/Notification';
@@ -31,10 +31,12 @@ export default class SectionStatistic extends Component {
     return (
       <section>
         <h2>Please Leave Feedback </h2>
-        <FeedbackOptions
-          options={data}
-          onLeaveFeedback={onLeaveFeedback}
-        />
+        <div className={s.btnList}>
+          <FeedbackOptions
+            options={data}
+            onLeaveFeedback={onLeaveFeedback}
+          />
+        </div>
         {this.countValues() !== 0 ? (
           <>
             <h3>Statistics</h3>

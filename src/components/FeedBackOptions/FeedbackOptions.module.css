@@ -1,0 +1,20 @@
+.button{
+    color: black;
+    padding: 5px 15px;
+    background-color:  whitesmoke;
+    border-radius: 5px;
+}
+
+.button:not(:last-child){
+    margin-right: 15px;
+}
+
+.button:hover,
+.button:focus {
+    color: white;
+    outline: none;
+    background-color: black;
+
+    transition: color .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: background-color .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
