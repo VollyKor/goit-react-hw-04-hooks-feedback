@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import { useReducer } from "react";
 
-const initialState = {
-  good: 0,
-  neutral: 0,
-  bad: 0,
-};
+export default function Feedback() {
+  const [state, dispatch] = useReducer(reducer, {
+    good: 0,
+    neutral: 0,
+  bad: 0})
 
-export default class Feedback extends Component {
-  state = {
-    ...initialState,
-  };
 
   renderFeedBackStatistics = () => {
     const feedbacks = Object.entries(this.state);
