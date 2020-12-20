@@ -37,7 +37,11 @@
   }
 }
 
-:global(#root){
+:global(#root) {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+:global(ul) {
+  list-style: none;
 }

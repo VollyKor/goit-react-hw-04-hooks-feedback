@@ -1,7 +1,7 @@
 import s from './Statistic.module.css';
 
-export default function Statistic(props) {
-  const feedbacks = Object.entries(props);
+export default function Statistic({ data, countValues }) {
+  const feedbacks = Object.entries(data);
   const jsxArr = feedbacks.map(arr => {
     if (arr[0] === 'positivePercentage') {
       return (
